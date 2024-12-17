@@ -20,4 +20,12 @@ public class PlayerRepository {
     public List<Player> findAll() {
         return playerList;
     }
+
+
+
+    public void save(Player s) {
+        s.setId(playerList.get(playerList.size()-1).getId() + 1);
+        playerList.add(s);
+    }
 }
+

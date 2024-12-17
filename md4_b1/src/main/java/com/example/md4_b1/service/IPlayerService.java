@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface IPlayerService {
     List<Player> getAll();
+
+    void save(Player player);
 }

@@ -12,6 +12,10 @@
 <body>
 <div class="container mt-5">
     <h1>Danh sách cầu thủ</h1>
+    <div class="mb-3">
+        <button class="btn btn-primary" type="button" onclick="window.location.href='/player/create'">Create</button>
+
+    </div>
     <table class="table table-bordered">
         <thead>
         <tr>
