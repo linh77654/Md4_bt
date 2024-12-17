@@ -14,7 +14,6 @@ public class PlayerService implements IPlayerService {
     @Autowired
     private PlayerRepository playerRepository;
 
-
     @Override
     public List<Player> getAll() {
         return playerRepository.findAll();
@@ -23,5 +22,10 @@ public class PlayerService implements IPlayerService {
     @Override
     public void save(Player player) {
         playerRepository.save(player);
+    }
+
+    @Override
+    public void remove(String playerCode) {
+        playerRepository.remove(playerCode);
     }
 }

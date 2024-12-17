@@ -4,35 +4,33 @@ import java.time.LocalDate;
 
 public class Player {
     private Integer id;
-    private String maCauthu;
-    private String hoVaTen;
-    private LocalDate ngaySinh;
-    private String kinhNghiem;
-    private String viTri;
-    private String anhDaiDien;
+    private String playerCode;
+    private String fullName;
+    private LocalDate birthDate;
+    private String experience;
+    private String position;
+    private String avatarUrl;
 
     public Player() {
     }
 
-    public Player(Integer id, String maCauthu, String hoVaTen, LocalDate ngaySinh, String kinhNghiem, String viTri, String anhDaiDien) {
+    public Player(Integer id, String playerCode, String fullName, LocalDate birthDate, String experience, String position, String avatarUrl) {
         this.id = id;
-        this.maCauthu = maCauthu;
-        this.hoVaTen = hoVaTen;
-        this.ngaySinh = ngaySinh;
-        this.kinhNghiem = kinhNghiem;
-        this.viTri = viTri;
-        this.anhDaiDien = anhDaiDien;
+        this.playerCode = playerCode;
+        this.fullName = fullName;
+        this.birthDate = birthDate;
+        this.experience = experience;
+        this.position = position;
+        this.avatarUrl = avatarUrl;
     }
 
-
-
-    public Player(String maCauthu, String hoVaTen, String ngaySinh, String kinhNghiem, String viTri, String anhDaiDien) {
-    this.maCauthu = maCauthu;
-    this.hoVaTen = hoVaTen;
-    this.ngaySinh = LocalDate.parse(ngaySinh);
-    this.kinhNghiem = kinhNghiem;
-    this.viTri = viTri;
-    this.anhDaiDien = anhDaiDien;
+    public Player(String playerCode, String fullName, String birthDate, String experience, String position, String avatarUrl) {
+        this.playerCode = playerCode;
+        this.fullName = fullName;
+        this.birthDate = LocalDate.parse(birthDate);
+        this.experience = experience;
+        this.position = position;
+        this.avatarUrl = avatarUrl;
     }
 
     public Integer getId() {
@@ -43,51 +41,51 @@ public class Player {
         this.id = id;
     }
 
-    public String getMaCauthu() {
-        return maCauthu;
+    public String getPlayerCode() {
+        return playerCode;
     }
 
-    public void setMaCauthu(String maCauthu) {
-        this.maCauthu = maCauthu;
+    public void setPlayerCode(String playerCode) {
+        this.playerCode = playerCode;
     }
 
-    public String getHoVaTen() {
-        return hoVaTen;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setHoVaTen(String hoVaTen) {
-        this.hoVaTen = hoVaTen;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public LocalDate getNgaySinh() {
-        return ngaySinh;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
-    public void setNgaySinh(LocalDate ngaySinh) {
-        this.ngaySinh = ngaySinh;
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
-    public String getKinhNghiem() {
-        return kinhNghiem;
+    public String getExperience() {
+        return experience;
     }
 
-    public void setKinhNghiem(String kinhNghiem) {
-        this.kinhNghiem = kinhNghiem;
+    public void setExperience(String experience) {
+        this.experience = experience;
     }
 
-    public String getViTri() {
-        return viTri;
+    public String getPosition() {
+        return position;
     }
 
-    public void setViTri(String viTri) {
-        this.viTri = viTri;
+    public void setPosition(String position) {
+        this.position = position;
     }
 
-    public String getAnhDaiDien() {
-        return anhDaiDien;
+    public String getAvatarUrl() {
+        return avatarUrl;
     }
 
-    public void setAnhDaiDien(String anhDaiDien) {
-        this.anhDaiDien = anhDaiDien;
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 }

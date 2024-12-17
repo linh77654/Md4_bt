@@ -14,7 +14,6 @@
     <h1>Danh sách cầu thủ</h1>
     <div class="mb-3">
         <button class="btn btn-primary" type="button" onclick="window.location.href='/player/create'">Create</button>
-
     </div>
     <table class="table table-bordered">
         <thead>
@@ -26,19 +25,26 @@
             <th>Kinh nghiệm</th>
             <th>Vị trí</th>
             <th>Ảnh đại diện</th>
+            <th>Thao tác</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach var="player" items="${playerList}" varStatus="c">
             <tr>
                 <td>${c.count}</td>
-                <td>${player.maCauthu}</td>
-                <td>${player.hoVaTen}</td>
-                <td>${player.ngaySinh}</td>
-                <td>${player.kinhNghiem}</td>
-                <td>${player.viTri}</td>
+                <td>${player.playerCode}</td>
+                <td>${player.fullName}</td>
+                <td>${player.birthDate}</td>
+                <td>${player.experience}</td>
+                <td>${player.position}</td>
                 <td>
-                    <img src="${player.anhDaiDien}" alt="Ảnh đại diện" style="width: 100px; height: auto;">
+                    <img src="${player.avatarUrl}" alt="Ảnh đại diện" style="width: 100px; height: auto;">
+                </td>
+                <td>
+                    <a href="/player/${player.playerCode}/delete" class="btn btn-danger"
+                       onclick="return confirm('Bạn có chắc chắn muốn xóa cầu thủ này không?')">
+                        <i class="bi bi-trash"></i> Xóa
+                    </a>
                 </td>
             </tr>
         </c:forEach>

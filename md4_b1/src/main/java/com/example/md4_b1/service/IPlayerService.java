@@ -8,4 +8,6 @@ public interface IPlayerService {
     List<Player> getAll();
 
     void save(Player player);
+
+    void remove(String playerCode);
 }
