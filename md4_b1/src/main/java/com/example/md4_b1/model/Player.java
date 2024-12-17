@@ -24,13 +24,15 @@ public class Player {
         this.anhDaiDien = anhDaiDien;
     }
 
-    public Player(String maCauthu, String hoVaTen, LocalDate ngaySinh, String kinhNghiem, String viTri, String anhDaiDien) {
-        this.maCauthu = maCauthu;
-        this.hoVaTen = hoVaTen;
-        this.ngaySinh = ngaySinh;
-        this.kinhNghiem = kinhNghiem;
-        this.viTri = viTri;
-        this.anhDaiDien = anhDaiDien;
+
+
+    public Player(String maCauthu, String hoVaTen, String ngaySinh, String kinhNghiem, String viTri, String anhDaiDien) {
+    this.maCauthu = maCauthu;
+    this.hoVaTen = hoVaTen;
+    this.ngaySinh = LocalDate.parse(ngaySinh);
+    this.kinhNghiem = kinhNghiem;
+    this.viTri = viTri;
+    this.anhDaiDien = anhDaiDien;
     }
 
     public Integer getId() {

@@ -37,10 +37,11 @@ public class PlayerController {
     public String createPlayer(
                                @RequestParam String maCauthu,
                                @RequestParam String hoVaTen,
-                               @RequestParam LocalDate ngaySinh,
+                               @RequestParam String ngaySinh,
                                @RequestParam String kinhNghiem,
                                @RequestParam String viTri,
                                @RequestParam String anhDaiDien
+
                                ){
         Player player = new Player( maCauthu, hoVaTen, ngaySinh, kinhNghiem, viTri, anhDaiDien);
         playerService.save(player);
