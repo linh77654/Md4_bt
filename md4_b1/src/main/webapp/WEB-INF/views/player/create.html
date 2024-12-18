@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Thêm cầu thủ</title>
+  <th:block th:replace="header::library"></th:block>
+</head>
+<body>
+<div class="container mt-5">
+  <h1>Thêm cầu thủ mới</h1>
+  <form th:action="@{/player/create}" th:object="${player}" method="post">
+    <!-- Hiển thị lỗi nếu có -->
+    <div th:if="${#fields.hasErrors()}" class="alert alert-danger">
+      <ul>
+        <li th:each="error : ${#fields.errors()}" th:text="${error}"></li>
+      </ul>
+    </div>
+
+    <div class="mb-3">
+      <label for="playerCode" class="form-label">Mã cầu thủ</label>
+      <input type="text" class="form-control" id="playerCode" th:field="*{playerCode}" pattern="^[A-Za-z0-9]+$" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="fullName" class="form-label">Họ và tên</label>
+      <input type="text" class="form-control" id="fullName" th:field="*{fullName}" pattern="^[a-zA-Z ]+$" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="birthDate" class="form-label">Ngày sinh</label>
+      <input type="date" class="form-control" id="birthDate" th:field="*{birthDate}" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="experience" class="form-label">Kinh nghiệm</label>
+      <input type="number" class="form-control" id="experience" th:field="*{experience}" min="0" max="50" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="position" class="form-label">Vị trí</label>
+      <select class="form-select" id="position" th:field="*{position}">
+        <option value="">--- Chọn vị trí ---</option>
+        <option th:each="pos : ${positions}" th:value="${pos}" th:text="${pos}"></option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="avatarUrl" class="form-label">Ảnh đại diện</label>
+      <input type="url" class="form-control" id="avatarUrl" th:field="*{avatarUrl}" placeholder="Nhập URL ảnh đại diện" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Thêm cầu thủ</button>
+  </form>
+</div>
+</body>
+</html>

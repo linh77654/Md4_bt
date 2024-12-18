@@ -19,14 +19,14 @@ public class PlayerController {
     @GetMapping("")
     public String viewAllPlayer(Model model) {
         model.addAttribute("playerList", playerService.getAll());
-        return "list";
+        return "player/list";
     }
 
     @GetMapping("/create")
     public String createPlayerForm(Model model) {
         model.addAttribute("player", new Player());
         model.addAttribute("positions", new String[] {"Forward", "Midfielder", "Defender", "Goalkeeper"});
-        return "/create";
+        return "player/create";
     }
 
     @PostMapping("/create")
@@ -39,7 +39,7 @@ public class PlayerController {
         if (bindingResult.hasErrors()) {
             model.addAttribute("errors", bindingResult.getAllErrors());
             model.addAttribute("positions", new String[] {"Forward", "Midfielder", "Defender", "Goalkeeper"});
-            return "/create";
+            return "player/create";
         }
         playerService.save(player);
         redirectAttributes.addFlashAttribute("message", "Create player successfully!");

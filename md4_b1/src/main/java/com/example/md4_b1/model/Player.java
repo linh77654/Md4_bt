@@ -1,11 +1,14 @@
 package com.example.md4_b1.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 
 public class Player {
     private Integer id;
     private String playerCode;
     private String fullName;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthDate;
     private String experience;
     private String position;
