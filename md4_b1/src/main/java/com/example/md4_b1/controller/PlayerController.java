@@ -9,8 +9,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.List;
-
 @Controller
 @RequestMapping("/player")
 public class PlayerController {
@@ -20,34 +18,38 @@ public class PlayerController {
 
     @GetMapping("")
     public String viewAllPlayer(Model model) {
-        List<Player> playerList = playerService.getAll();
-        model.addAttribute("playerList", playerList);
+        model.addAttribute("playerList", playerService.getAll());
         return "list";
     }
 
     @GetMapping("/create")
     public String createPlayerForm(Model model) {
         model.addAttribute("player", new Player());
-        return "create";
+        model.addAttribute("positions", new String[] {"Forward", "Midfielder", "Defender", "Goalkeeper"});
+        return "/create";
     }
 
     @PostMapping("/create")
     public String createPlayer(
-            @RequestParam String playerCode,
-            @RequestParam String fullName,
-            @RequestParam String birthDate,
-            @RequestParam String experience,
-            @RequestParam String position,
-            @RequestParam String avatarUrl
+            @ModelAttribute("player") Player player,
+            BindingResult bindingResult,
+            RedirectAttributes redirectAttributes,
+            Model model
     ) {
-        Player player = new Player(playerCode, fullName, birthDate, experience, position, avatarUrl);
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("errors", bindingResult.getAllErrors());
+            model.addAttribute("positions", new String[] {"Forward", "Midfielder", "Defender", "Goalkeeper"});
+            return "/create";
+        }
         playerService.save(player);
+        redirectAttributes.addFlashAttribute("message", "Create player successfully!");
         return "redirect:/player";
     }
 
     @GetMapping("/{playerCode}/delete")
-    public String deletePlayer(@PathVariable String playerCode) {
+    public String deletePlayer(@PathVariable String playerCode, RedirectAttributes redirectAttributes) {
         playerService.remove(playerCode);
+        redirectAttributes.addFlashAttribute("message", "Delete player successfully!");
         return "redirect:/player";
     }
 }
