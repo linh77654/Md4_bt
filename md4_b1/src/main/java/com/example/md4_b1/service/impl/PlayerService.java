@@ -25,7 +25,7 @@ public class PlayerService implements IPlayerService {
     }
 
     @Override
-    public void remove(String playerCode) {
-        playerRepository.remove(playerCode);
+    public void remove(int id) {
+        playerRepository.remove(id);
     }
 }

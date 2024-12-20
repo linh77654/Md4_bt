@@ -9,5 +9,5 @@ public interface IPlayerService {
 
     void save(Player player);
 
-    void remove(String playerCode);
+    void remove(int id);
 }

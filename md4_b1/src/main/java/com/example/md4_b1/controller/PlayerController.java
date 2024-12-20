@@ -46,9 +46,9 @@ public class PlayerController {
         return "redirect:/player";
     }
 
-    @GetMapping("/{playerCode}/delete")
-    public String deletePlayer(@PathVariable String playerCode, RedirectAttributes redirectAttributes) {
-        playerService.remove(playerCode);
+    @GetMapping("/{id}/delete")
+    public String deletePlayer(@PathVariable int id, RedirectAttributes redirectAttributes) {
+        playerService.remove(id);
         redirectAttributes.addFlashAttribute("message", "Delete player successfully!");
         return "redirect:/player";
     }

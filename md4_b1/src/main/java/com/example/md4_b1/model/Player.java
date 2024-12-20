@@ -2,10 +2,17 @@ package com.example.md4_b1.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
+@Entity(name="player")
 public class Player {
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String playerCode;
     private String fullName;
     @DateTimeFormat(pattern = "yyyy-MM-dd")

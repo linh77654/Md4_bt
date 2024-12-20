@@ -3,6 +3,7 @@ package com.example.md4_b1.repository;
 import com.example.md4_b1.model.Player;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityTransaction;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,20 +20,38 @@ public class PlayerRepository {
     }
 
     public List<Player> findAll() {
+        List<Player> players = BaseRepository.entityManager.createQuery("from player", Player.class).getResultList();
         return players;
     }
 
     public void save(Player player) {
-        player.setId(players.get(players.size() - 1).getId() + 1);
-        players.add(player);
+        EntityTransaction transaction = BaseRepository.entityManager.getTransaction();
+        transaction.begin();
+        BaseRepository.entityManager.persist(player);
+        transaction.commit();
     }
 
-    public void remove(String playerCode) {
-        for (int i = 0; i < players.size(); i++) {
-            if (players.get(i).getPlayerCode().equals(playerCode)) {
-                players.remove(i);
-                break;
-            }
+    public void remove(int id) {
+        EntityTransaction transaction = BaseRepository.entityManager.getTransaction();
+        transaction.begin();
+        Player player = BaseRepository.entityManager.find(Player.class, id);
+        if (player != null) {
+            BaseRepository.entityManager.remove(player);
         }
+        transaction.commit();
     }
 }
+//    public void save(Player player) {
+//        player.setId(players.get(players.size() - 1).getId() + 1);
+//        players.add(player);
+//    }
+
+//    public void remove(int id) {
+//        for (int i = 0; i < players.size(); i++) {
+//            if (players.get(i).getPlayerCode().equals(id)) {
+//                players.remove(i);
+//                break;
+//            }
+//        }
+//    }
+
